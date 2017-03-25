@@ -1,11 +1,11 @@
 p\_wnp
 ================
 
-##### John R. Brandon
+### John R. Brandon, PhD
 
-This notebook demonstrates a reproduction of Model 2B, the preferred model, of Moore and Weller (2013).
+This notebook demonstrates a reproduction of Model 2B, the preferred model, of Moore and Weller (2013). The results from this voded version of the model are demonstrated to be equal to Moore and Weller’s. This effort has served a couple of purposes: (1) an independent verification; and, (2) a code source that can be used to analyze simulation output for risk assessment.
 
-Moore and Weller (2013) developed the original code for Model 2B in WinBUGS. I developed some JAGS code (Plummer 2013) using the `rjags` package in this exercise. The code is open source below (cross platform friendly) and should provide an independent check on NOAA results, among other potential applications.
+Moore and Weller (2013) developed the original code for Model 2B in WinBUGS. I developed some JAGS code (Plummer 2013) using the `rjags` package in this exercise. The code is open source below (JAGS is cross platform friendly) and should provide an independent check on NOAA results, among other potential applications.
 
 Model 2B: Comparing results
 ---------------------------
