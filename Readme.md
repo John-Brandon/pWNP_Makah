@@ -172,6 +172,13 @@ ggs_density(m2b_tbl)  # Plot posterior probability density
 
 ![](Readme_files/figure-markdown_github/unnamed-chunk-5-3.png)
 
+Gray whale model by the SF Zoo
+------------------------------
+
+My session info is below the references.
+
+![gw\_model](./img/gw_model.jpg)
+
 ### References
 
 Moore, J.E. and Weller, D.W. 2013. Probability of taking a western North Pacific gray whale during the proposed Makah hunt. U.S. Dep. Commer., NOAA Tech. Memo. NMFS-SWFSC- 506, 13 p.

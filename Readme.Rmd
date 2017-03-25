@@ -149,6 +149,11 @@ ggs_density(m2b_tbl)  # Plot posterior probability density
 
 ```
 
+## Gray whale model by the SF Zoo
+
+My session info is below the references. 
+
+![gw_model](./img/gw_model.jpg)
 
 ### References
 Moore, J.E. and Weller, D.W. 2013. Probability of taking a western North Pacific gray whale
