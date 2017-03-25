@@ -1,10 +1,11 @@
-Probability of the proposed Makah hunt taking a Western North Pacific (WNP) gray whale
+p\_wnp
 ================
-John R. Brandon
 
-I'm in the process of recreating the results of Moore and Weller (2013), and figured I'd keep a notebook here to document my methods for Model 2B, the preferred model. I was also able to recreate results for Models 1A and 1B a few years back, but those models don't seem to be as useful, so I haven't documented them.
+##### John R. Brandon
 
-Moore and Weller (2013) used a Bayesian approach for Models 2 -- 4. The original code for Model 2B was written in WinBUGS. I developed some JAGS code (Plummer 2013) using the `rjags` package instead. The code is open source below (cross platform friendly) and should provide an independent check on NOAA results, among other potential applications.
+This notebook demonstrates a reproduction of Model 2B, the preferred model, of Moore and Weller (2013).
+
+Moore and Weller (2013) developed the original code for Model 2B in WinBUGS. I developed some JAGS code (Plummer 2013) using the `rjags` package in this exercise. The code is open source below (cross platform friendly) and should provide an independent check on NOAA results, among other potential applications.
 
 Model 2B: Comparing results
 ---------------------------
@@ -15,7 +16,7 @@ Model 2B has a hierarchical structure (a mixture of probability distributions), 
 
 This *P*<sub>*m**a**x*</sub> hyper-prior is the product of two components, one fixed and one random. The fixed component is the relative abundance of WNP gray whales in the ENP migration. In Model 2B, the relative abundance is fixed equal to the 99th percentile of the WNP abundance estimate (the WNP upper bound) divided by the 1st percentile of ENP abundance (the ENP lower bound). I ran some sensitivity tests on this assumption for Model 1B back in 2013, and the results were robust. I haven't run sensitivity tests for Model 2B.
 
-Nevertheless, the first thing to to do is to make sure the relative abundance parameter is calculated properly. The other component of *P*<sub>*m**a**x*</sub> is, the proportion of the WNP stock that joins the ENP migration (*m*). That proportion is uncertain, and treated as a random variable. It is multiplied by the relative abundance parameter in the JAGS code further below.
+Nevertheless, the first thing to to do is to make sure the relative abundance parameter is calculated properly. The other component of *P*<sub>*m**a**x*</sub> is, the proportion of the WNP stock that has an ENP migration route (*m*). That proportion is uncertain, and treated as a random variable. It is multiplied by the relative abundance parameter in the JAGS code further below.
 
 ``` r
 # Checking here that my calculations of the "rel_abun" parameter are consistent:
@@ -38,11 +39,9 @@ wnp_99 = qlnorm(p = 0.99, meanlog = mu_wnp, sdlog = sigma_wnp)  # WNP_99thPercen
 rel_abun = wnp_99 / enp_01
 ```
 
-The solution from this approach and data is:
+The solution from this approach and data -- Relative WNP / ENP abundance = 0.0104827
 
-Relative WNP / ENP abundance = 0.0104827
-
-So, the assumption here is that the upper limit on the percentage of the ENP migration that is WNP gray whales is about 1%. That's also assuming that all WNP gray whales migrate in the ENP.
+So, the assumption here is that the upper limit on the percentage of the ENP migration that is WNP gray whales is about 1%. That's also assuming that all WNP gray whales have an ENP migration route.
 
 ### JAGS code for Model 2B
 
@@ -143,9 +142,9 @@ m2b_samples %>% unlist() %>%
     ##   50%   95% 
     ## 0.002 0.005
 
-From Tables 1 -- 3 of Moore and Weller (2013), these percentiles should be: median = 0.002 (95th percentile = 0.005), after rounding to the third digit.
+From Tables 1 -- 3 of Moore and Weller (2013), these percentiles should be: median = 0.002 (95th percentile = 0.005), after rounding to the third digit. Hence, the results here are consistent with Moore and Weller's.
 
-So, the results here are consistent with Moore and Weller's.
+This effort has served a couple of purposes: (1) an independent verification; and (2) an additional code source that I can use to analyze simulation output for risk assessment.
 
 ### Inspect the Markov Chains
 
