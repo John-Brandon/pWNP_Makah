@@ -9,7 +9,7 @@ This notebook replicates the results of Model 2B, the preferred model, of Moore 
     (1) an independent verification; and, 
     (2) a code source that can be used to analyze simulation output for risk assessment.  
 
-Moore and Weller (2013) developed the original code for Model 2B in WinBUGS. I developed JAGS code (Plummer 2013) using the `rjags` package in this exercise. The code is open source below, and JAGS is cross platform friendly. 
+Moore and Weller (2013) developed the original code for Model 2B in WinBUGS. I developed JAGS code (Plummer 2013; "Just Another Gibbs Sampler"), using the `rjags` package in this exercise. The code is open source below, and JAGS is cross platform friendly. 
 
 ## Model 2B: Comparing results
 
