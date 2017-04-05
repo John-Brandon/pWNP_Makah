@@ -77,6 +77,14 @@ gw_dat = list(n_mig = n_mig,
 # Model 2B ------------------------------------------------------------------------
 m2b_jags = "
   model {
+    # m2b.jags
+    # John R. Brandon, PhD
+    #
+    # JAGS code for WNP gray whale / Makah analysis
+    # Following Bayesian model (2B) developed by Moore and Weller (2013 NOAA Tech Memo)
+    #
+    # This program is distributed under the terms of the GNU General Public License v3
+    # (copy provided in the LICENSE file of this repository).
 
     # Likelihood
     #   where:
@@ -206,19 +214,15 @@ sessionInfo()
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ##  [1] ggmcmc_1.1      dplyr_0.5.0     purrr_0.2.2     readr_1.0.0    
-    ##  [5] tidyr_0.6.1     tibble_1.2      ggplot2_2.2.1   tidyverse_1.0.0
-    ##  [9] runjags_2.0.4-2 rjags_4-6       coda_0.19-1    
+    ##  [1] dplyr_0.5.0     purrr_0.2.2     readr_1.0.0     tidyr_0.6.1    
+    ##  [5] tibble_1.2      ggplot2_2.2.1   tidyverse_1.0.0 runjags_2.0.4-2
+    ##  [9] rjags_4-6       coda_0.19-1    
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] Rcpp_0.12.9        GGally_1.3.0       knitr_1.15.1      
-    ##  [4] magrittr_1.5       munsell_0.4.3      colorspace_1.3-2  
-    ##  [7] lattice_0.20-34    R6_2.2.0           stringr_1.1.0     
-    ## [10] plyr_1.8.4         tools_3.3.2        parallel_3.3.2    
-    ## [13] grid_3.3.2         gtable_0.2.0       DBI_0.5-1         
-    ## [16] htmltools_0.3.5    assertthat_0.1     yaml_2.1.14       
-    ## [19] lazyeval_0.2.0     rprojroot_1.2      digest_0.6.11     
-    ## [22] reshape2_1.4.2     RColorBrewer_1.1-2 codetools_0.2-15  
-    ## [25] evaluate_0.10      rmarkdown_1.3      labeling_0.3      
-    ## [28] stringi_1.1.2      scales_0.4.1       backports_1.0.5   
-    ## [31] reshape_0.8.6
+    ##  [1] Rcpp_0.12.9      knitr_1.15.1     magrittr_1.5     munsell_0.4.3   
+    ##  [5] colorspace_1.3-2 lattice_0.20-34  R6_2.2.0         stringr_1.1.0   
+    ##  [9] plyr_1.8.4       tools_3.3.2      parallel_3.3.2   grid_3.3.2      
+    ## [13] gtable_0.2.0     DBI_0.5-1        htmltools_0.3.5  assertthat_0.1  
+    ## [17] yaml_2.1.14      lazyeval_0.2.0   rprojroot_1.2    digest_0.6.11   
+    ## [21] evaluate_0.10    rmarkdown_1.3    stringi_1.1.2    scales_0.4.1    
+    ## [25] backports_1.0.5

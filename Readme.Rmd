@@ -79,6 +79,14 @@ gw_dat = list(n_mig = n_mig,
 # Model 2B ------------------------------------------------------------------------
 m2b_jags = "
   model {
+    # m2b.jags
+    # John R. Brandon, PhD
+    #
+    # JAGS code for WNP gray whale / Makah analysis
+    # Following Bayesian model (2B) developed by Moore and Weller (2013 NOAA Tech Memo)
+    #
+    # This program is distributed under the terms of the GNU General Public License v3
+    # (copy provided in the LICENSE file of this repository).
 
     # Likelihood
     #   where:
