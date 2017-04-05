@@ -1,21 +1,21 @@
 
-  model {
+model {
 
-    # Likelihood
-    #   where:
-    #     n_mig = 83 (non-PCFG migrants in MUA sightings data)
-    #     n_sights = 118 (total sightings in MUA, including PCFG)
-    n_mig ~ dbin(p_mig, n_sights)
+# Likelihood
+#   where:
+#     n_mig = 83 (non-PCFG migrants in MUA sightings data)
+#     n_sights = 118 (total sightings in MUA, including PCFG)
+n_mig ~ dbin(p_mig, n_sights)
 
-    # Parameters
-    m ~ dunif(m_min, m_max)  # Probability a WNP whale migrates through MU&A
-    p_max <- m * rel_abun       
-    p_wnp_mig ~ dunif(0, p_max)
-    
-    p_mig ~ dunif(0, 1)  # Moore and Weller (2013): Bayesian estimation section
+# Parameters
+m ~ dunif(m_min, m_max)  # Probability a WNP whale migrates through MU&A
+p_max <- m * rel_abun       
+p_wnp_mig ~ dunif(0, p_max)
 
-    # Marginal probability of WNP gray whale being taken in hunt
-    p_wnp <- p_mig * p_wnp_mig  
+p_mig ~ dunif(0, 1)  # Moore and Weller (2013): Bayesian estimation section
 
-  }
-  
+# Marginal probability of WNP gray whale being taken in hunt
+p_wnp <- p_mig * p_wnp_mig  
+
+}
+
