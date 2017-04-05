@@ -14,11 +14,11 @@ Moore and Weller (2013) developed the original code for Model 2B in WinBUGS. I d
 ## Model 2B: Comparing results
 
 ### Relative abundance parameter calculation
-Model 2B has a hierarchical structure (a mixture of probability distributions), with a hyper-prior on the upper bound ($P_{max}$) of the conditional probability that a whale is a WNP gray, given the proportion of WNP whales associated with the ENP migration and the relative abundance of the two stocks. 
+Model 2B has a hierarchical structure (a mixture of probability distributions), with a hyper-prior probability distribution for the upper bound ($P_{max}$) of the conditional probability that a whale is a WNP gray, given the proportion of WNP whales associated with the ENP migration and the relative abundance of the two stocks. 
 
 This $P_{max}$ hyper-prior is the product of two components, one fixed and one random. The fixed component is the relative abundance of the two stocks. In Model 2B, the relative abundance is fixed equal to the 99th percentile of the WNP abundance estimate (the WNP upper bound) divided by the 1st percentile of ENP abundance (the ENP lower bound). I ran some sensitivity tests on this assumption for Model 1B back in 2013, and the results were robust. I haven't run sensitivity tests for Model 2B.    
 
-Nevertheless, the first thing to to do is to make sure the relative abundance parameter is calculated properly. The other component of $P_{max}$ is, the proportion of the WNP stock that has an ENP migration route ($m$). That proportion is uncertain, and treated as a random variable. It is multiplied by the relative abundance parameter to derive $P_{max}$ (see "JAGS code for Model 2B").
+Nevertheless, the first thing to to do to replicate Moore and Weller's results is to make sure the relative abundance parameter is calculated properly. 
 
 ```{r cache=TRUE}
 # Checking here that my calculations of the "rel_abun" parameter are consistent:
@@ -46,7 +46,12 @@ The solution from this approach and data is: Maximum relative WNP / ENP abundanc
 So, the assumption here is that the upper limit on the percentage of the ENP migration that could potentially be WNP gray whales is about `r round(rel_abun, digits = 2)*100`%. That's also assuming that all WNP gray whales have an ENP migration route.
 
 ### JAGS code for Model 2B
+
 Given a value for the fixed relative abundance component, we can develop the Model 2B JAGS code for the probability that there will be a take of a WNP gray in the proposed Makah hunt ($P_{WNP}$).
+
+The other component of $P_{max}$ is, the proportion of the WNP stock that has an ENP migration route ($m$). That proportion is uncertain, and treated as a random variable. It is multiplied by the relative abundance parameter to derive $P_{max}$. 
+
+The JAGS code below provides the methods used to replicate the estimate of $P_{WNP}$ for Model 2B.
 
 ```{r message=FALSE}
 # JAGS code and list of input quantities for P_WNP gray whale take | Makah hunt 
@@ -131,13 +136,13 @@ m2b_samples %>% unlist() %>%
 
 From Tables 1--3 of Moore and Weller (2013), these percentiles should be: 50th percentile = 0.002 (95th percentile = 0.005), after rounding to the third digit. 
 
-Hence, the results from this coding of the model are consistent with Moore and Weller's.
+Hence, the results from my model 2B code are consistent at this stage with the results from Moore and Weller (2013).
 
 ### Inspect the Markov Chains
 I haven't calculated any convergence statistics, but we can take a closer look at a couple of visual diagnostic plots (autocorrelation and running mean) for the chains. Not surprisingly there's nothing pathologic. They look quite well behaved. 
 
 ```{r message=FALSE, cache=TRUE}
-library(ggmcmc)
+library(ggmcmc)  # Wrapper functions for plotting MCMC chains using `ggplot`
 m2b_tbl = ggs(m2b_samples) %>%  # Wrangle the MCMC chains from a list object to a data.frame table
   as.tbl() 
 
