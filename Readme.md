@@ -12,7 +12,7 @@ Model 2B: Comparing results
 
 ### Relative abundance parameter calculation
 
-Model 2B has a hierarchical structure (a mixture of probability distributions), with a hyper-prior probability distribution for the upper bound (*P*<sub>*m**a**x*</sub>) of the conditional probability that a whale is a WNP gray, given the proportion of WNP whales associated with the ENP migration and the relative abundance of the two stocks.
+Model 2B has a hierarchical structure (parameter(s) can be a mixture of probability distributions), with a hyper-prior probability distribution for the upper bound (*P*<sub>*m**a**x*</sub>) of the conditional probability that a whale is a WNP gray, given the proportion of WNP whales associated with the ENP migration and the relative abundance of the two stocks.
 
 This *P*<sub>*m**a**x*</sub> hyper-prior is the product of two components, one fixed and one random. The fixed component is the relative abundance of the two stocks. In Model 2B, the relative abundance is fixed equal to the 99th percentile of the WNP abundance estimate (the WNP upper bound) divided by the 1st percentile of ENP abundance (the ENP lower bound). I ran some sensitivity tests on this assumption for Model 1B back in 2013, and the results were robust. I haven't run sensitivity tests for Model 2B.
 
